@@ -2,9 +2,9 @@ version: "3.7"
 
 services:
   wp:
-    image: wordpress:${WP_TAG}
+    image: "wordpress:${WP_TAG}"
     ports:
-      - "${WP_IP}:${WP_PORT}:80"
+      - ${WP_IP}:${WP_PORT}:80
     volumes:
       - "./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini"
       - ".:/var/www/html"
@@ -18,27 +18,27 @@ services:
     restart: unless-stopped
 
   wpcli:
-    image: wordpress:cli
+    image: "wordpress:cli"
     volumes:
-      - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
-      - ./wp-app:/var/www/html
+      - "./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini"
+      - "./wp-app:/var/www/html"
     depends_on:
       - db
       - wp
 
   pma:
-    image: phpmyadmin/phpmyadmin
+    image: "phpmyadmin/phpmyadmin"
     environment:
       PMA_HOST: db
       PMA_PORT: 3306
       MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
     ports:
-      - ${IP}:${PMA_PORT}:80
+      - "${IP}:${PMA_PORT}:80"
     depends_on:
       - db
 
   db:
-    image: mysql:${MYSQL_TAG}
+    image: "mysql:${MYSQL_TAG}"
     ports:
       - "${IP}:3306:3306"
     command: [
