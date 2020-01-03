@@ -1,3 +1,6 @@
+################# TenereLabs.com #########################
+# Before proceeding copy .env.example into .env file and change variables if needed
+
 version: "3.7"
 
 services:
@@ -53,8 +56,10 @@ services:
       - "./wp-data:/docker-entrypoint-initdb.d"
       - "db_data:/var/lib/mysql"
     environment:
-      MYSQL_DATABASE: "${DB_NAME}"
-      MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
+      MYSQL_DATABASE: "${DB_NAME}" # Create your database
+      MYSQL_USER: "${DB_USER}" # your database user
+      MYSQL_PASSWORD: "${DB_PASSWORD}" # your data base password
+      MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}" # Mandatory for the image
     restart: unless-stopped
 
 volumes:
