@@ -17,8 +17,8 @@ services:
       WORDPRESS_DB_USER: "${DB_USER}"
       WORDPRESS_DB_PASSWORD: "${DB_PASSWORD}"
       WORDPRESS_TABLE_PREFIX: "${WP_TABLE_PREFIX}"
-      APACHE_RUN_USER: "#${UID}"
-      APACHE_RUN_GROUP: "#${GID}"
+      APACHE_RUN_USER: "#${UID}" # remove this line if you are using Windows or OS X
+      APACHE_RUN_GROUP: "#${GID}" # and remove or comment this line too if you are not on linux
 
     depends_on:
       - db
