@@ -6,7 +6,7 @@ version: "3.7"
 services:
   wp:
     build: .
-    image: wordpress:${WP_TAG}
+    image: TNCwordpress:${WP_TAG}
     ports:
       - ${IP}:${WP_PORT}:80
     volumes:
